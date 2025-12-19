@@ -22,6 +22,9 @@ public class NoticePlugin extends JavaPlugin {
         NoticeCommand noticeCommand = new NoticeCommand(messageManager);
         getCommand("notice").setExecutor(noticeCommand);
         
+        ReloadCommand reloadCommand = new ReloadCommand(this);
+        getCommand("noticereload").setExecutor(reloadCommand);
+        
         // 起動メッセージをmessage.ymlから取得
         String enableMessage = messageManager.getPlainMessage("plugin-enabled");
         if (enableMessage != null) {

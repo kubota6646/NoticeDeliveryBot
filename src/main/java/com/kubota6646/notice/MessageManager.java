@@ -34,6 +34,14 @@ public class MessageManager {
     }
     
     /**
+     * message.ymlを再読み込みする
+     * リロードコマンドで使用
+     */
+    public void reload() {
+        messageConfig = YamlConfiguration.loadConfiguration(messageFile);
+    }
+    
+    /**
      * キーからメッセージを取得する（カラーコード適用）
      * @param key メッセージキー
      * @return カラーコードが適用されたメッセージ、キーが存在しない場合はnull

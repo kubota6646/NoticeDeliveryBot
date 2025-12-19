@@ -11,8 +11,16 @@ commands:
     usage: /notice
     permission: notice.use
     permission-message: このコマンドを使用する権限がありません
+  noticereload:
+    description: message.ymlを再読み込み
+    usage: /noticereload
+    permission: notice.reload
+    permission-message: このコマンドを使用する権限がありません
 
 permissions:
   notice.use:
     description: /noticeコマンドの使用を許可
+    default: op
+  notice.reload:
+    description: /noticereloadコマンドの使用を許可
     default: op

@@ -37,15 +37,16 @@ mvn clean package
 
 ### コマンド (Commands)
 
-```
-/notice
-```
-
+#### /notice
 現在ログイン中の全プレイヤーにお知らせメッセージを送信します。
+
+#### /noticereload
+message.ymlを再読み込みします。設定ファイルを編集した後、サーバーを再起動せずに変更を反映できます。
 
 ### 権限 (Permissions)
 
 - `notice.use` - /noticeコマンドの使用権限（デフォルト: op）
+- `notice.reload` - /noticereloadコマンドの使用権限（デフォルト: op）
 
 ### メッセージの設定 (Message Configuration)
 
@@ -59,6 +60,7 @@ messages:
   # システムメッセージ
   error-load-failed: "&cメッセージの読み込みに失敗しました"
   success-sent: "&aお知らせを送信しました！"
+  reload-success: "&amessage.ymlを再読み込みしました！"
   
   # プラグインライフサイクルメッセージ
   plugin-enabled: "NoticePluginが有効になりました！"

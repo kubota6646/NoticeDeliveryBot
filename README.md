@@ -82,7 +82,7 @@ messages:
 
 ## 動作環境 (Requirements)
 
-- Minecraft 1.20.1以上
+- Minecraft 1.19.4以上
 - Spigot/Bukkit API
 - Java 17以上
 

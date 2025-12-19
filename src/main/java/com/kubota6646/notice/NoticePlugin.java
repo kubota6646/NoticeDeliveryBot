@@ -3,8 +3,8 @@ package com.kubota6646.notice;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Main plugin class for NoticePlugin
- * Handles plugin initialization and shutdown
+ * NoticePluginのメインクラス
+ * プラグインの初期化と終了処理を行います
  */
 public class NoticePlugin extends JavaPlugin {
     
@@ -12,28 +12,28 @@ public class NoticePlugin extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        // Save default message.yml if it doesn't exist
+        // message.ymlがない場合はデフォルトファイルを作成
         saveResource("message.yml", false);
         
-        // Initialize message manager
+        // メッセージマネージャーを初期化
         messageManager = new MessageManager(this);
         
-        // Register commands
+        // コマンドを登録
         NoticeCommand noticeCommand = new NoticeCommand(messageManager);
         getCommand("notice").setExecutor(noticeCommand);
         getCommand("notice").setTabCompleter(noticeCommand);
         
-        getLogger().info("NoticePlugin has been enabled!");
+        getLogger().info("NoticePluginが有効になりました！");
     }
     
     @Override
     public void onDisable() {
-        getLogger().info("NoticePlugin has been disabled!");
+        getLogger().info("NoticePluginが無効になりました！");
     }
     
     /**
-     * Get the message manager instance
-     * @return MessageManager instance
+     * メッセージマネージャーのインスタンスを取得
+     * @return MessageManagerインスタンス
      */
     public MessageManager getMessageManager() {
         return messageManager;

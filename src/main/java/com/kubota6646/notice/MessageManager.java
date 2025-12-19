@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
- * Manages messages from message.yml
+ * message.ymlからメッセージを管理するクラス
  */
 public class MessageManager {
     
@@ -17,17 +17,13 @@ public class MessageManager {
     private FileConfiguration messageConfig;
     private File messageFile;
     
-    /**
-     * Constructor for MessageManager
-     * @param plugin The main plugin instance
-     */
     public MessageManager(NoticePlugin plugin) {
         this.plugin = plugin;
         loadMessages();
     }
     
     /**
-     * Load messages from message.yml
+     * message.ymlを読み込む
      */
     private void loadMessages() {
         messageFile = new File(plugin.getDataFolder(), "message.yml");
@@ -40,16 +36,16 @@ public class MessageManager {
     }
     
     /**
-     * Reload messages from message.yml
+     * message.ymlを再読み込みする
      */
     public void reloadMessages() {
         messageConfig = YamlConfiguration.loadConfiguration(messageFile);
     }
     
     /**
-     * Get a message by key
-     * @param key The message key
-     * @return The message with color codes translated, or null if not found
+     * キーからメッセージを取得する
+     * @param key メッセージキー
+     * @return カラーコードが適用されたメッセージ、キーが存在しない場合はnull
      */
     public String getMessage(String key) {
         String message = messageConfig.getString("messages." + key);
@@ -60,8 +56,8 @@ public class MessageManager {
     }
     
     /**
-     * Get all available message keys
-     * @return Set of message keys
+     * 利用可能なメッセージキーを取得する
+     * @return メッセージキーのセット
      */
     public Set<String> getMessageKeys() {
         if (messageConfig.getConfigurationSection("messages") != null) {
@@ -71,9 +67,9 @@ public class MessageManager {
     }
     
     /**
-     * Check if a message key exists
-     * @param key The message key
-     * @return true if the key exists, false otherwise
+     * メッセージキーが存在するか確認する
+     * @param key メッセージキー
+     * @return 存在する場合true、存在しない場合false
      */
     public boolean hasMessage(String key) {
         return messageConfig.contains("messages." + key);

@@ -6,49 +6,49 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Command executor for /notice command
+ * /noticeコマンドの実行処理
+ * 現在ログイン中のプレイヤー全員にメッセージを送信します
  */
 public class NoticeCommand implements CommandExecutor, TabCompleter {
     
     private final MessageManager messageManager;
     
-    /**
-     * Constructor for NoticeCommand
-     * @param messageManager The message manager instance
-     */
     public NoticeCommand(MessageManager messageManager) {
         this.messageManager = messageManager;
     }
     
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // Check if a message key was provided
+        // メッセージキーが指定されていない場合
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "Usage: /notice <message-key>");
-            sender.sendMessage(ChatColor.YELLOW + "Available keys: " + String.join(", ", messageManager.getMessageKeys()));
+            sender.sendMessage(ChatColor.RED + "使用方法: /notice <メッセージキー>");
+            sender.sendMessage(ChatColor.YELLOW + "利用可能なキー: " + String.join(", ", messageManager.getMessageKeys()));
             return true;
         }
         
         String messageKey = args[0];
         
-        // Check if the message key exists
+        // メッセージキーが存在しない場合
         if (!messageManager.hasMessage(messageKey)) {
-            sender.sendMessage(ChatColor.RED + "Message key '" + messageKey + "' not found in message.yml");
-            sender.sendMessage(ChatColor.YELLOW + "Available keys: " + String.join(", ", messageManager.getMessageKeys()));
+            sender.sendMessage(ChatColor.RED + "メッセージキー '" + messageKey + "' が見つかりません");
+            sender.sendMessage(ChatColor.YELLOW + "利用可能なキー: " + String.join(", ", messageManager.getMessageKeys()));
             return true;
         }
         
-        // Get and broadcast the message
+        // メッセージを取得して、現在ログイン中の全プレイヤーに送信
         String message = messageManager.getMessage(messageKey);
-        Bukkit.broadcastMessage(message);
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(message);
+        }
         
-        // Send confirmation to sender
-        sender.sendMessage(ChatColor.GREEN + "Message broadcasted successfully!");
+        // 送信完了メッセージ
+        sender.sendMessage(ChatColor.GREEN + "メッセージを送信しました！");
         
         return true;
     }
@@ -57,7 +57,6 @@ public class NoticeCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         List<String> completions = new ArrayList<>();
         
-        // Only provide completions for the first argument (message key)
         if (args.length == 1) {
             String partial = args[0].toLowerCase();
             for (String key : messageManager.getMessageKeys()) {

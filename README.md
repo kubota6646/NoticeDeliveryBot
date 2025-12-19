@@ -1,19 +1,19 @@
 # NoticePlugin
 
-MinecraftJAVA版のプラグイン - message.ymlに記載したメッセージを/noticeコマンドで配信
+MinecraftJAVA版のプラグイン - message.ymlに記載したメッセージを/noticeコマンドで現在ログイン中のプレイヤーに送信
 
 ## 概要 (Overview)
 
 NoticePluginは、Minecraft JAVA版のSpigot/Bukkitサーバー向けのプラグインです。
-`message.yml`ファイルに設定したメッセージを`/notice`コマンドで全プレイヤーに配信できます。
+`message.yml`ファイルに設定したメッセージを`/notice`コマンドで現在ログイン中の全プレイヤーに送信できます。
 
 This is a Minecraft JAVA Edition plugin for Spigot/Bukkit servers.
-It allows you to broadcast messages configured in `message.yml` using the `/notice` command.
+It allows you to send messages configured in `message.yml` to all currently logged-in players using the `/notice` command.
 
 ## 機能 (Features)
 
 - 📝 `message.yml`で複数のメッセージを管理
-- 📢 `/notice <メッセージキー>`でメッセージを全プレイヤーに配信
+- 📢 `/notice <メッセージキー>`で現在ログイン中のプレイヤーにメッセージを送信
 - 🎨 カラーコード対応（&文字を使用）
 - ✨ タブ補完機能
 - 🔒 権限システム対応
@@ -43,7 +43,7 @@ mvn clean package
 /notice <message-key>
 ```
 
-メッセージキーを指定して、全プレイヤーにメッセージを配信します。
+メッセージキーを指定して、現在ログイン中の全プレイヤーにメッセージを送信します。
 
 **例 (Examples):**
 ```

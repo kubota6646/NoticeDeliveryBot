@@ -1,7 +1,6 @@
 package com.kubota6646.notice;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +24,11 @@ public class NoticeCommand implements CommandExecutor {
         String message = messageManager.getMessage("notice");
         
         if (message == null) {
-            sender.sendMessage(ChatColor.RED + "メッセージの読み込みに失敗しました");
+            // エラーメッセージもmessage.ymlから取得
+            String errorMessage = messageManager.getMessage("error-load-failed");
+            if (errorMessage != null) {
+                sender.sendMessage(errorMessage);
+            }
             return true;
         }
         
@@ -33,8 +36,11 @@ public class NoticeCommand implements CommandExecutor {
             player.sendMessage(message);
         }
         
-        // 送信完了メッセージ
-        sender.sendMessage(ChatColor.GREEN + "お知らせを送信しました！");
+        // 送信完了メッセージもmessage.ymlから取得
+        String successMessage = messageManager.getMessage("success-sent");
+        if (successMessage != null) {
+            sender.sendMessage(successMessage);
+        }
         
         return true;
     }

@@ -22,12 +22,20 @@ public class NoticePlugin extends JavaPlugin {
         NoticeCommand noticeCommand = new NoticeCommand(messageManager);
         getCommand("notice").setExecutor(noticeCommand);
         
-        getLogger().info("NoticePluginが有効になりました！");
+        // 起動メッセージをmessage.ymlから取得
+        String enableMessage = messageManager.getPlainMessage("plugin-enabled");
+        if (enableMessage != null) {
+            getLogger().info(enableMessage);
+        }
     }
     
     @Override
     public void onDisable() {
-        getLogger().info("NoticePluginが無効になりました！");
+        // 停止メッセージをmessage.ymlから取得
+        String disableMessage = messageManager.getPlainMessage("plugin-disabled");
+        if (disableMessage != null) {
+            getLogger().info(disableMessage);
+        }
     }
     
     /**

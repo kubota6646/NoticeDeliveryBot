@@ -34,7 +34,7 @@ public class MessageManager {
     }
     
     /**
-     * キーからメッセージを取得する
+     * キーからメッセージを取得する（カラーコード適用）
      * @param key メッセージキー
      * @return カラーコードが適用されたメッセージ、キーが存在しない場合はnull
      */
@@ -44,5 +44,15 @@ public class MessageManager {
             return ChatColor.translateAlternateColorCodes('&', message);
         }
         return null;
+    }
+    
+    /**
+     * キーからメッセージを取得する（プレーンテキスト）
+     * ログ出力など、カラーコードが不要な場合に使用
+     * @param key メッセージキー
+     * @return プレーンテキストのメッセージ、キーが存在しない場合はnull
+     */
+    public String getPlainMessage(String key) {
+        return messageConfig.getString("messages." + key);
     }
 }

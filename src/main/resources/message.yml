@@ -3,4 +3,13 @@
 # 使用方法: /notice <メッセージキー>
 
 messages:
+  # プレイヤーに送信されるお知らせメッセージ
   notice: "&a新しいお知らせが配信されました！詳細はDiscordをご覧ください"
+  
+  # システムメッセージ
+  error-load-failed: "&cメッセージの読み込みに失敗しました"
+  success-sent: "&aお知らせを送信しました！"
+  
+  # プラグインライフサイクルメッセージ
+  plugin-enabled: "NoticePluginが有効になりました！"
+  plugin-disabled: "NoticePluginが無効になりました！"

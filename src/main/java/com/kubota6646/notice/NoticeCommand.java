@@ -1,72 +1,47 @@
 package com.kubota6646.notice;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.bukkit.entity.Player;
 
 /**
- * Command executor for /notice command
+ * /noticeコマンドの実行処理
+ * 現在ログイン中のプレイヤー全員にお知らせメッセージを送信します
  */
-public class NoticeCommand implements CommandExecutor, TabCompleter {
+public final class NoticeCommand implements CommandExecutor {
     
     private final MessageManager messageManager;
     
-    /**
-     * Constructor for NoticeCommand
-     * @param messageManager The message manager instance
-     */
     public NoticeCommand(MessageManager messageManager) {
         this.messageManager = messageManager;
     }
     
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // Check if a message key was provided
-        if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "Usage: /notice <message-key>");
-            sender.sendMessage(ChatColor.YELLOW + "Available keys: " + String.join(", ", messageManager.getMessageKeys()));
+        // メッセージを取得して、現在ログイン中の全プレイヤーに送信
+        String message = messageManager.getMessage("notice");
+        
+        if (message == null) {
+            // エラーメッセージもmessage.ymlから取得
+            String errorMessage = messageManager.getMessage("error-load-failed");
+            if (errorMessage != null) {
+                sender.sendMessage(errorMessage);
+            }
             return true;
         }
         
-        String messageKey = args[0];
-        
-        // Check if the message key exists
-        if (!messageManager.hasMessage(messageKey)) {
-            sender.sendMessage(ChatColor.RED + "Message key '" + messageKey + "' not found in message.yml");
-            sender.sendMessage(ChatColor.YELLOW + "Available keys: " + String.join(", ", messageManager.getMessageKeys()));
-            return true;
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(message);
         }
         
-        // Get and broadcast the message
-        String message = messageManager.getMessage(messageKey);
-        Bukkit.broadcastMessage(message);
-        
-        // Send confirmation to sender
-        sender.sendMessage(ChatColor.GREEN + "Message broadcasted successfully!");
+        // 送信完了メッセージもmessage.ymlから取得
+        String successMessage = messageManager.getMessage("success-sent");
+        if (successMessage != null) {
+            sender.sendMessage(successMessage);
+        }
         
         return true;
-    }
-    
-    @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        List<String> completions = new ArrayList<>();
-        
-        // Only provide completions for the first argument (message key)
-        if (args.length == 1) {
-            String partial = args[0].toLowerCase();
-            for (String key : messageManager.getMessageKeys()) {
-                if (key.toLowerCase().startsWith(partial)) {
-                    completions.add(key);
-                }
-            }
-        }
-        
-        return completions;
     }
 }

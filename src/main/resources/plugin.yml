@@ -1,18 +1,26 @@
 name: NoticePlugin
-version: 1.0.0
+version: 0.0.3
 main: com.kubota6646.notice.NoticePlugin
-api-version: 1.20
-description: A plugin to broadcast messages from message.yml using /notice command
+api-version: 1.19
+description: 現在ログイン中のプレイヤーにお知らせを送信するプラグイン。/noticeコマンドを実行すると、message.ymlに設定されたメッセージが全オンラインプレイヤーに配信されます。
 author: kubota6646
 
 commands:
   notice:
-    description: Broadcast a message from message.yml
-    usage: /notice <message-key>
+    description: お知らせメッセージを送信
+    usage: /notice
     permission: notice.use
-    permission-message: You don't have permission to use this command
+    permission-message: このコマンドを使用する権限がありません
+  noticereload:
+    description: message.ymlを再読み込み
+    usage: /noticereload
+    permission: notice.reload
+    permission-message: このコマンドを使用する権限がありません
 
 permissions:
   notice.use:
-    description: Allows using the /notice command
+    description: /noticeコマンドの使用を許可
+    default: op
+  notice.reload:
+    description: /noticereloadコマンドの使用を許可
     default: op

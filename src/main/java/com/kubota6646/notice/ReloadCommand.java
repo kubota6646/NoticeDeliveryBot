@@ -19,12 +19,20 @@ public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // message.ymlを再読み込み
-        plugin.getMessageManager().reload();
+        boolean success = plugin.getMessageManager().reload();
         
-        // 成功メッセージを送信
-        String successMessage = plugin.getMessageManager().getMessage("reload-success");
-        if (successMessage != null) {
-            sender.sendMessage(successMessage);
+        if (success) {
+            // 成功メッセージを送信
+            String successMessage = plugin.getMessageManager().getMessage("reload-success");
+            if (successMessage != null) {
+                sender.sendMessage(successMessage);
+            }
+        } else {
+            // 失敗メッセージを送信
+            String errorMessage = plugin.getMessageManager().getMessage("reload-failed");
+            if (errorMessage != null) {
+                sender.sendMessage(errorMessage);
+            }
         }
         
         return true;

@@ -36,9 +36,16 @@ public class MessageManager {
     /**
      * message.ymlを再読み込みする
      * リロードコマンドで使用
+     * @return 再読み込みに成功した場合true、失敗した場合false
      */
-    public void reload() {
-        messageConfig = YamlConfiguration.loadConfiguration(messageFile);
+    public boolean reload() {
+        try {
+            messageConfig = YamlConfiguration.loadConfiguration(messageFile);
+            return true;
+        } catch (Exception e) {
+            plugin.getLogger().warning("message.ymlの再読み込みに失敗しました: " + e.getMessage());
+            return false;
+        }
     }
     
     /**

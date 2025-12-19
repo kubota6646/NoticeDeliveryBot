@@ -10,6 +10,7 @@ messages:
   error-load-failed: "&cメッセージの読み込みに失敗しました"
   success-sent: "&aお知らせを送信しました！"
   reload-success: "&amessage.ymlを再読み込みしました！"
+  reload-failed: "&cmessage.ymlの再読み込みに失敗しました"
   
   # プラグインライフサイクルメッセージ
   plugin-enabled: "NoticePluginが有効になりました！"

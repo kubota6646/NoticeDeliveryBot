@@ -13,7 +13,6 @@ buildNumber.properties
 # Gradle
 .gradle/
 build/
-!gradle-wrapper.jar
 .gradletasknamecache
 
 # IDE
@@ -39,3 +38,6 @@ build/
 *.zip
 *.tar.gz
 *.rar
+
+# Exception for Gradle wrapper
+!gradle/wrapper/gradle-wrapper.jar

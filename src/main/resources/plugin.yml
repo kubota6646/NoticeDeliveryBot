@@ -2,13 +2,13 @@ name: NoticePlugin
 version: 1.0.0
 main: com.kubota6646.notice.NoticePlugin
 api-version: 1.19
-description: 現在ログイン中のプレイヤーにメッセージを送信するプラグイン
+description: 現在ログイン中のプレイヤーにお知らせを送信するプラグイン
 author: kubota6646
 
 commands:
   notice:
-    description: message.ymlからメッセージを送信
-    usage: /notice <メッセージキー>
+    description: お知らせメッセージを送信
+    usage: /notice
     permission: notice.use
     permission-message: このコマンドを使用する権限がありません
 

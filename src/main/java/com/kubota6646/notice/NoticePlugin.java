@@ -21,7 +21,6 @@ public class NoticePlugin extends JavaPlugin {
         // コマンドを登録
         NoticeCommand noticeCommand = new NoticeCommand(messageManager);
         getCommand("notice").setExecutor(noticeCommand);
-        getCommand("notice").setTabCompleter(noticeCommand);
         
         getLogger().info("NoticePluginが有効になりました！");
     }

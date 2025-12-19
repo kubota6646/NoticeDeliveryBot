@@ -5,8 +5,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
-import java.util.Collections;
-import java.util.Set;
 
 /**
  * message.ymlからメッセージを管理するクラス
@@ -36,13 +34,6 @@ public class MessageManager {
     }
     
     /**
-     * message.ymlを再読み込みする
-     */
-    public void reloadMessages() {
-        messageConfig = YamlConfiguration.loadConfiguration(messageFile);
-    }
-    
-    /**
      * キーからメッセージを取得する
      * @param key メッセージキー
      * @return カラーコードが適用されたメッセージ、キーが存在しない場合はnull
@@ -53,25 +44,5 @@ public class MessageManager {
             return ChatColor.translateAlternateColorCodes('&', message);
         }
         return null;
-    }
-    
-    /**
-     * 利用可能なメッセージキーを取得する
-     * @return メッセージキーのセット
-     */
-    public Set<String> getMessageKeys() {
-        if (messageConfig.getConfigurationSection("messages") != null) {
-            return messageConfig.getConfigurationSection("messages").getKeys(false);
-        }
-        return Collections.emptySet();
-    }
-    
-    /**
-     * メッセージキーが存在するか確認する
-     * @param key メッセージキー
-     * @return 存在する場合true、存在しない場合false
-     */
-    public boolean hasMessage(String key) {
-        return messageConfig.contains("messages." + key);
     }
 }

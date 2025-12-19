@@ -27,9 +27,9 @@ mvn clean package
 ./gradlew clean build
 ```
 
-2. 生成された`notice-plugin-0.0.1.jar`を`plugins/`フォルダにコピー
-   - Maven: `target/notice-plugin-0.0.1.jar`
-   - Gradle: `build/libs/notice-plugin-0.0.1.jar`
+2. 生成された`notice-plugin-0.0.2.jar`を`plugins/`フォルダにコピー
+   - Maven: `target/notice-plugin-0.0.2.jar`
+   - Gradle: `build/libs/notice-plugin-0.0.2.jar`
 
 3. サーバーを再起動
 
@@ -49,11 +49,20 @@ mvn clean package
 
 ### メッセージの設定 (Message Configuration)
 
-`plugins/NoticePlugin/message.yml`ファイルでメッセージを変更できます：
+`plugins/NoticePlugin/message.yml`ファイルで全てのメッセージを変更できます：
 
 ```yaml
 messages:
+  # プレイヤーに送信されるお知らせメッセージ
   notice: "&a新しいお知らせが配信されました！詳細はDiscordをご覧ください"
+  
+  # システムメッセージ
+  error-load-failed: "&cメッセージの読み込みに失敗しました"
+  success-sent: "&aお知らせを送信しました！"
+  
+  # プラグインライフサイクルメッセージ
+  plugin-enabled: "NoticePluginが有効になりました！"
+  plugin-disabled: "NoticePluginが無効になりました！"
 ```
 
 #### カラーコード (Color Codes)
@@ -72,6 +81,20 @@ messages:
 - Minecraft 1.19.4以上
 - Spigot/Bukkit API
 - Java 17以上
+
+## 変更履歴 (Changelog)
+
+### Version 0.0.2
+- プラグインで使用する全てのメッセージをmessage.ymlで編集可能に変更
+- エラーメッセージ、成功メッセージ、プラグイン起動/停止メッセージを追加
+- MessageManagerに`getPlainMessage()`メソッドを追加（ログ出力用）
+
+### Version 0.0.1
+- 初期リリース
+- Minecraft 1.19.4対応
+- Gradle ビルドシステム追加
+- 単一のお知らせメッセージ機能を実装
+- 全メッセージの日本語化
 
 ## ビルド方法 (Building)
 

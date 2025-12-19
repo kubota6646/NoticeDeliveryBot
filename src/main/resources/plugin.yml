@@ -1,5 +1,5 @@
 name: NoticePlugin
-version: 0.0.1
+version: 0.0.2
 main: com.kubota6646.notice.NoticePlugin
 api-version: 1.19
 description: 現在ログイン中のプレイヤーにお知らせを送信するプラグイン。/noticeコマンドを実行すると、message.ymlに設定されたメッセージが全オンラインプレイヤーに配信されます。

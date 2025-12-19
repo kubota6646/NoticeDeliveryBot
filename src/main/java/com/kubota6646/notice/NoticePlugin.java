@@ -12,8 +12,7 @@ public class NoticePlugin extends JavaPlugin {
     
     @Override
     public void onEnable() {
-        // Save default config files if they don't exist
-        saveDefaultConfig();
+        // Save default message.yml if it doesn't exist
         saveResource("message.yml", false);
         
         // Initialize message manager

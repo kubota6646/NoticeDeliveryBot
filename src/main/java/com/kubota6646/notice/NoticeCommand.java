@@ -43,15 +43,8 @@ public class NoticeCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         
-        // Get the message
+        // Get and broadcast the message
         String message = messageManager.getMessage(messageKey);
-        
-        if (message == null) {
-            sender.sendMessage(ChatColor.RED + "Failed to retrieve message for key: " + messageKey);
-            return true;
-        }
-        
-        // Broadcast the message to all players
         Bukkit.broadcastMessage(message);
         
         // Send confirmation to sender

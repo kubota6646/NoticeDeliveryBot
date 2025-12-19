@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -66,7 +67,7 @@ public class MessageManager {
         if (messageConfig.getConfigurationSection("messages") != null) {
             return messageConfig.getConfigurationSection("messages").getKeys(false);
         }
-        return Set.of();
+        return Collections.emptySet();
     }
     
     /**

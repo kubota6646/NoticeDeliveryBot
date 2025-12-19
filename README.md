@@ -22,10 +22,16 @@ It allows you to broadcast messages configured in `message.yml` using the `/noti
 
 1. プラグインをビルド:
 ```bash
+# Mavenの場合
 mvn clean package
+
+# Gradleの場合（推奨）
+./gradlew clean build
 ```
 
 2. 生成された`notice-plugin-1.0.0.jar`を`plugins/`フォルダにコピー
+   - Maven: `target/notice-plugin-1.0.0.jar`
+   - Gradle: `build/libs/notice-plugin-1.0.0.jar`
 
 3. サーバーを再起動
 
@@ -89,10 +95,14 @@ messages:
 ## ビルド方法 (Building)
 
 ```bash
+# Mavenの場合
 mvn clean package
+
+# Gradleの場合（推奨）
+./gradlew clean build
 ```
 
-ビルドされたJARファイルは`target/`ディレクトリに生成されます。
+ビルドされたJARファイルは`target/`（Maven）または`build/libs/`（Gradle）ディレクトリに生成されます。
 
 ## ライセンス (License)
 

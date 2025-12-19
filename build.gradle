@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.kubota6646'
+version = '1.0.0'
+description = 'A plugin to broadcast messages from message.yml using /notice command'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigot-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'papermc'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    filesMatching('plugin.yml') {
+        expand(
+            'version': project.version
+        )
+    }
+}
+
+jar {
+    archiveBaseName = 'notice-plugin'
+    archiveVersion = project.version
+}

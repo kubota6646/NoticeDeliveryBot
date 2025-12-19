@@ -28,7 +28,7 @@ mvn clean package
 ビルドが成功すると、以下の場所にJARファイルが生成されます：
 
 ```
-target/notice-plugin-1.0.0.jar
+target/notice-plugin-0.0.1.jar
 ```
 
 #### 2-B. Gradleでビルド
@@ -48,7 +48,7 @@ gradlew.bat clean build
 ビルドが成功すると、以下の場所にJARファイルが生成されます：
 
 ```
-build/libs/notice-plugin-1.0.0.jar
+build/libs/notice-plugin-0.0.1.jar
 ```
 
 ## ビルドの確認 (Verify Build)
@@ -178,7 +178,7 @@ IntelliJ IDEA Community Edition 2025.2.4以降で動作確認済みです。
 **Mavenの場合:**
 ```
 target/
-├── notice-plugin-1.0.0.jar          # 最終的なプラグインファイル
+├── notice-plugin-0.0.1.jar          # 最終的なプラグインファイル
 ├── classes/                         # コンパイル済みクラスファイル
 ├── maven-archiver/                  # Mavenメタデータ
 └── maven-status/                    # ビルド状態
@@ -188,12 +188,12 @@ target/
 ```
 build/
 ├── libs/
-│   └── notice-plugin-1.0.0.jar      # 最終的なプラグインファイル
+│   └── notice-plugin-0.0.1.jar      # 最終的なプラグインファイル
 ├── classes/                         # コンパイル済みクラスファイル
 └── resources/                       # リソースファイル
 ```
 
-生成された`notice-plugin-1.0.0.jar`をMinecraftサーバーの`plugins/`フォルダにコピーして使用してください。
+生成された`notice-plugin-0.0.1.jar`をMinecraftサーバーの`plugins/`フォルダにコピーして使用してください。
 
 ## クリーンビルド (Clean Build)
 

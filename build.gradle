@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.kubota6646'
-version = '1.0.0'
+version = '0.0.1'
 description = 'A plugin to broadcast messages from message.yml using /notice command'
 
 java {

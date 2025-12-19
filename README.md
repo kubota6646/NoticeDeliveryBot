@@ -27,9 +27,9 @@ mvn clean package
 ./gradlew clean build
 ```
 
-2. 生成された`notice-plugin-1.0.0.jar`を`plugins/`フォルダにコピー
-   - Maven: `target/notice-plugin-1.0.0.jar`
-   - Gradle: `build/libs/notice-plugin-1.0.0.jar`
+2. 生成された`notice-plugin-0.0.1.jar`を`plugins/`フォルダにコピー
+   - Maven: `target/notice-plugin-0.0.1.jar`
+   - Gradle: `build/libs/notice-plugin-0.0.1.jar`
 
 3. サーバーを再起動
 

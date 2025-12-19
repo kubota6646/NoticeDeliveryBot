@@ -1,11 +1,11 @@
-# Message configuration file for NoticePlugin
-# Add your messages here with keys and values
-# Usage: /notice <message-key>
+# NoticePlugin用メッセージ設定ファイル
+# キーと値を使用してメッセージを追加してください
+# 使用方法: /notice <メッセージキー>
 
 messages:
-  welcome: "&aWelcome to our server!"
-  maintenance: "&cServer maintenance will start in 10 minutes. Please save your progress."
-  event: "&6Special event starting now! Join us at spawn!"
-  restart: "&eServer will restart in 5 minutes."
-  rules: "&bPlease follow server rules. Type /rules for more information."
-  donation: "&dSupport our server! Visit our website for donation options."
+  welcome: "&aサーバーへようこそ！"
+  maintenance: "&cサーバーメンテナンスを10分後に開始します。進行状況を保存してください。"
+  event: "&6特別イベントを開始します！スポーン地点に集合してください！"
+  restart: "&eサーバーは5分後に再起動します。"
+  rules: "&bサーバールールを守ってください。詳細は /rules コマンドで確認できます。"
+  donation: "&dサーバーを支援してください！寄付のオプションはウェブサイトをご覧ください。"

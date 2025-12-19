@@ -33,14 +33,16 @@ target/notice-plugin-1.0.0.jar
 
 #### 2-B. Gradleでビルド
 
-```bash
-gradle clean build
-```
-
-または、Gradle Wrapperを使用（推奨）：
+Gradle Wrapperを使用（推奨）：
 
 ```bash
 ./gradlew clean build
+```
+
+Windows の場合：
+
+```bash
+gradlew.bat clean build
 ```
 
 ビルドが成功すると、以下の場所にJARファイルが生成されます：

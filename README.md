@@ -1,5 +1,7 @@
 # NoticePlugin
 
+**バージョン:** 0.0.2
+
 MinecraftJAVA版のプラグイン - /noticeコマンドで現在ログイン中のプレイヤーにお知らせを送信
 
 ## 概要 (Overview)
@@ -13,7 +15,9 @@ It allows you to send notification messages to all currently logged-in players u
 ## 機能 (Features)
 
 - 📢 `/notice`コマンドで現在ログイン中のプレイヤーにお知らせを送信
+- 🔄 `/noticereload`コマンドでサーバーを再起動せずに設定を再読み込み
 - 🎨 カラーコード対応（&文字を使用）
+- 📝 全てのメッセージをmessage.ymlでカスタマイズ可能
 - 🔒 権限システム対応
 
 ## インストール方法 (Installation)
@@ -40,13 +44,38 @@ mvn clean package
 #### /notice
 現在ログイン中の全プレイヤーにお知らせメッセージを送信します。
 
+**使用例:**
+```
+/notice
+```
+
+実行すると、message.ymlの`notice`キーに設定されたメッセージが全オンラインプレイヤーに送信されます。
+
 #### /noticereload
 message.ymlを再読み込みします。設定ファイルを編集した後、サーバーを再起動せずに変更を反映できます。
 
+**使用例:**
+```
+/noticereload
+```
+
+メッセージ設定を変更した後、このコマンドを実行すると即座に反映されます。
+
 ### 権限 (Permissions)
 
-- `notice.use` - /noticeコマンドの使用権限（デフォルト: op）
-- `notice.reload` - /noticereloadコマンドの使用権限（デフォルト: op）
+| 権限 | 説明 | デフォルト |
+|------|------|-----------|
+| `notice.use` | /noticeコマンドの使用権限 | op |
+| `notice.reload` | /noticereloadコマンドの使用権限 | op |
+
+**権限設定例（permissions.ymlまたは権限プラグイン）:**
+```yaml
+groups:
+  moderator:
+    permissions:
+      - notice.use
+      - notice.reload
+```
 
 ### メッセージの設定 (Message Configuration)
 
@@ -68,16 +97,63 @@ messages:
   plugin-disabled: "NoticePluginが無効になりました！"
 ```
 
+#### メッセージのカスタマイズ例
+
+**サーバーメンテナンス通知:**
+```yaml
+notice: "&c【重要】30分後にメンテナンスを開始します。進行状況を保存してください。"
+```
+
+**イベント告知:**
+```yaml
+notice: "&6&l【イベント】特別イベントが開始されました！スポーンに集合してください！"
+```
+
+**日常的な通知:**
+```yaml
+notice: "&e【お知らせ】おはようございます！今日も良い一日を！"
+```
+
 #### カラーコード (Color Codes)
 
-メッセージ内で以下のカラーコードが使用できます：
+メッセージ内で`&`に続けて文字を入力することで、テキストに色を付けることができます：
 
-- `&a` - 緑 (Green)
-- `&c` - 赤 (Red)
-- `&e` - 黄色 (Yellow)
-- `&6` - 金色 (Gold)
-- `&b` - 水色 (Aqua)
-- その他のMinecraftカラーコード
+**主要な色コード:**
+
+| コード | 色 | 例 |
+|--------|------|------|
+| `&0` | 黒 | `&0黒色のテキスト` |
+| `&1` | 濃い青 | `&1濃い青色のテキスト` |
+| `&2` | 濃い緑 | `&2濃い緑色のテキスト` |
+| `&3` | 濃い水色 | `&3濃い水色のテキスト` |
+| `&4` | 濃い赤 | `&4濃い赤色のテキスト` |
+| `&5` | 濃い紫 | `&5濃い紫色のテキスト` |
+| `&6` | 金色 | `&6金色のテキスト` |
+| `&7` | 灰色 | `&7灰色のテキスト` |
+| `&8` | 濃い灰色 | `&8濃い灰色のテキスト` |
+| `&9` | 青 | `&9青色のテキスト` |
+| `&a` | 緑 | `&a緑色のテキスト` |
+| `&b` | 水色 | `&b水色のテキスト` |
+| `&c` | 赤 | `&c赤色のテキスト` |
+| `&d` | 明るい紫 | `&d明るい紫色のテキスト` |
+| `&e` | 黄色 | `&e黄色のテキスト` |
+| `&f` | 白 | `&f白色のテキスト` |
+
+**書式コード:**
+
+| コード | 書式 | 例 |
+|--------|------|------|
+| `&l` | 太字 | `&l太字のメッセージ` |
+| `&m` | 取り消し線 | `&m取り消し線` |
+| `&n` | 下線 | `&n下線付き` |
+| `&o` | 斜体 | `&o斜体` |
+| `&r` | リセット | `&r通常に戻す` |
+
+**組み合わせ例:**
+```yaml
+notice: "&c&l赤色で太字のメッセージ"
+notice: "&a緑色&bと水色&cと赤色"
+```
 
 ## 動作環境 (Requirements)
 
@@ -91,6 +167,8 @@ messages:
 - プラグインで使用する全てのメッセージをmessage.ymlで編集可能に変更
 - エラーメッセージ、成功メッセージ、プラグイン起動/停止メッセージを追加
 - MessageManagerに`getPlainMessage()`メソッドを追加（ログ出力用）
+- `/noticereload`コマンドを追加（サーバー再起動不要でmessage.ymlを再読み込み）
+- エラーハンドリングの改善
 
 ### Version 0.0.1
 - 初期リリース
@@ -99,18 +177,98 @@ messages:
 - 単一のお知らせメッセージ機能を実装
 - 全メッセージの日本語化
 
+## トラブルシューティング (Troubleshooting)
+
+### メッセージが表示されない
+
+1. `message.yml`ファイルの構文が正しいか確認してください
+2. インデント（空白）が正しく設定されているか確認してください
+3. メッセージキーが`messages:`セクション内にあるか確認してください
+4. `/noticereload`コマンドで設定を再読み込みしてください
+
+### プラグインが起動しない
+
+1. サーバーログでエラーを確認してください
+2. Minecraftのバージョンが1.19.4以上であることを確認してください
+3. Javaのバージョンが17以上であることを確認してください
+4. 他のプラグインとの競合がないか確認してください
+
+### コマンドが実行できない
+
+1. 権限設定を確認してください（`notice.use`権限が必要）
+2. プラグインが正常に有効化されているか確認してください（`/plugins`コマンドで確認）
+3. コマンド名が正しいか確認してください（`/notice`、`/noticereload`）
+
+### リロードコマンドが失敗する
+
+1. message.ymlファイルが正しい場所にあるか確認してください（`plugins/NoticePlugin/message.yml`）
+2. ファイルのYAML構文が正しいか確認してください
+3. ファイルの読み取り権限があるか確認してください
+4. サーバーログでエラーメッセージを確認してください
+
 ## ビルド方法 (Building)
 
-```bash
-# Mavenの場合
-mvn clean package
+### 必要な環境
+- Java 17以上
+- Maven 3.6以上 または Gradle 7.0以上
 
-# Gradleの場合（推奨）
+### Maven でビルド
+```bash
+mvn clean package
+```
+
+### Gradle でビルド（推奨）
+```bash
 ./gradlew clean build
 ```
 
-ビルドされたJARファイルは`target/`（Maven）または`build/libs/`（Gradle）ディレクトリに生成されます。
+ビルドされたJARファイルは以下の場所に生成されます：
+- Maven: `target/notice-plugin-0.0.2.jar`
+- Gradle: `build/libs/notice-plugin-0.0.2.jar`
+
+### IntelliJ IDEA でのビルド
+
+1. プロジェクトフォルダを開く
+2. IntelliJ IDEAが自動的にMavenまたはGradleプロジェクトとして認識
+3. `Build` → `Build Project` でビルド実行
+
+詳細は[BUILD.md](BUILD.md)を参照してください。
+
+## 開発情報 (Development)
+
+### プロジェクト構造
+```
+NoticeDeliveryBot/
+├── src/
+│   └── main/
+│       ├── java/com/kubota6646/notice/
+│       │   ├── NoticePlugin.java          # メインプラグインクラス
+│       │   ├── NoticeCommand.java         # /noticeコマンド処理
+│       │   ├── ReloadCommand.java         # /noticereloadコマンド処理
+│       │   └── MessageManager.java        # メッセージ管理
+│       └── resources/
+│           ├── plugin.yml                 # プラグイン設定
+│           └── message.yml                # メッセージ設定
+├── pom.xml                                # Maven設定
+├── build.gradle                           # Gradle設定
+└── README.md                              # このファイル
+```
+
+### 使用API
+- Spigot API 1.19.4-R0.1-SNAPSHOT
+- Bukkit ChatColor
+- Bukkit Configuration API
+
+## サポート (Support)
+
+問題が発生した場合やご質問がある場合は、[GitHubのIssues](https://github.com/kubota6646/NoticeDeliveryBot/issues)ページで報告してください。
 
 ## ライセンス (License)
 
 このプロジェクトのライセンスについては[LICENSE](LICENSE)ファイルを参照してください。
+
+---
+
+**作成者:** kubota6646  
+**バージョン:** 0.0.2  
+**対応バージョン:** Minecraft 1.19.4以上

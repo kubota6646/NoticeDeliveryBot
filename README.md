@@ -265,10 +265,39 @@ NoticeDeliveryBot/
 - Spigot API 1.19.4-R0.1-SNAPSHOT
 - Bukkit ChatColor
 - Bukkit Configuration API
+- JetBrains Annotations (@NotNull)
+
+### コード品質
+- IntelliJ IDEA警告のゼロ化対応
+- Null安全性の保証（@NotNullアノテーション使用）
+- 適切な例外処理とエラーハンドリング
+- 最終クラス（final）による安全な設計
+
+## よくある質問 (FAQ)
+
+### Q: プラグインが動作しない
+A: 以下を確認してください：
+1. Minecraftバージョンが1.19.4以上であること
+2. Java 17以上がインストールされていること
+3. plugin.ymlがプラグインフォルダに正しく配置されていること
+4. サーバーログでエラーメッセージを確認すること
+
+### Q: メッセージが表示されない
+A: `/noticereload`コマンドを実行してmessage.ymlを再読み込みしてください。また、message.ymlの構文が正しいか確認してください。
+
+### Q: 権限設定はどうすればいいですか？
+A: 権限プラグイン（LuckPermsなど）を使用して、`notice.use`および`notice.reload`権限を付与してください。デフォルトではオペレーターのみが使用可能です。
+
+### Q: カスタムメッセージを追加できますか？
+A: 現在のバージョンでは、message.ymlの既存のメッセージキーを編集することで、メッセージ内容をカスタマイズできます。新しいメッセージキーの追加は今後のバージョンで検討中です。
 
 ## サポート (Support)
 
 問題が発生した場合やご質問がある場合は、[GitHubのIssues](https://github.com/kubota6646/NoticeDeliveryBot/issues)ページで報告してください。
+
+## 貢献 (Contributing)
+
+プルリクエストを歓迎します！大きな変更の場合は、まずissueを開いて変更内容を議論してください。
 
 ## ライセンス (License)
 
@@ -276,6 +305,21 @@ NoticeDeliveryBot/
 
 ---
 
+### プロジェクト情報 (Project Information)
+
 **作成者:** kubota6646  
-**バージョン:** 0.0.3  
-**対応バージョン:** Minecraft 1.19.4以上
+**現在のバージョン:** 0.0.3  
+**対応Minecraftバージョン:** 1.19.4以上  
+**ビルドシステム:** Maven 3.6+ / Gradle 7.0+  
+**開発環境:** IntelliJ IDEA Community Edition 2025.2.4  
+
+### リンク (Links)
+- [GitHubリポジトリ](https://github.com/kubota6646/NoticeDeliveryBot)
+- [Issues](https://github.com/kubota6646/NoticeDeliveryBot/issues)
+- [Pull Requests](https://github.com/kubota6646/NoticeDeliveryBot/pulls)
+
+### 技術スタック (Tech Stack)
+- Java 17
+- Spigot/Bukkit API 1.19.4
+- Maven / Gradle
+- JetBrains Annotations

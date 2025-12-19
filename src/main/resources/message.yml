@@ -1,0 +1,11 @@
+# Message configuration file for NoticePlugin
+# Add your messages here with keys and values
+# Usage: /notice <message-key>
+
+messages:
+  welcome: "&aWelcome to our server!"
+  maintenance: "&cServer maintenance will start in 10 minutes. Please save your progress."
+  event: "&6Special event starting now! Join us at spawn!"
+  restart: "&eServer will restart in 5 minutes."
+  rules: "&bPlease follow server rules. Type /rules for more information."
+  donation: "&dSupport our server! Visit our website for donation options."

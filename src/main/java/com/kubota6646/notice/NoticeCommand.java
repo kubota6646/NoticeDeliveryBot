@@ -5,7 +5,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * /noticeコマンドの実行処理
@@ -20,7 +19,7 @@ public final class NoticeCommand implements CommandExecutor {
     }
     
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // メッセージを取得して、現在ログイン中の全プレイヤーに送信
         String message = messageManager.getMessage("notice");
         

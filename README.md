@@ -165,9 +165,9 @@ notice: "&a緑色&bと水色&cと赤色"
 
 ### Version 0.0.3
 - コード品質の改善（IntelliJ IDEA警告の修正）
-- `@NotNull`アノテーションを追加してnull安全性を向上
 - コマンド登録時のNullPointerException対策を追加
 - クラスを`final`にして継承を防止
+- 外部依存の削除（コンパイルエラー修正）
 
 ### Version 0.0.2
 - プラグインで使用する全てのメッセージをmessage.ymlで編集可能に変更
@@ -265,13 +265,12 @@ NoticeDeliveryBot/
 - Spigot API 1.19.4-R0.1-SNAPSHOT
 - Bukkit ChatColor
 - Bukkit Configuration API
-- JetBrains Annotations (@NotNull)
 
 ### コード品質
-- IntelliJ IDEA警告のゼロ化対応
-- Null安全性の保証（@NotNullアノテーション使用）
+- IntelliJ IDEA警告への対応
 - 適切な例外処理とエラーハンドリング
 - 最終クラス（final）による安全な設計
+- コマンド登録時のnullチェック
 
 ## よくある質問 (FAQ)
 
@@ -322,4 +321,3 @@ A: 現在のバージョンでは、message.ymlの既存のメッセージキー
 - Java 17
 - Spigot/Bukkit API 1.19.4
 - Maven / Gradle
-- JetBrains Annotations

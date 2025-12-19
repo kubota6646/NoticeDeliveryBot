@@ -1,5 +1,6 @@
 package com.kubota6646.notice;
 
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -20,10 +21,20 @@ public class NoticePlugin extends JavaPlugin {
         
         // コマンドを登録
         NoticeCommand noticeCommand = new NoticeCommand(messageManager);
-        getCommand("notice").setExecutor(noticeCommand);
+        PluginCommand noticeCmd = getCommand("notice");
+        if (noticeCmd != null) {
+            noticeCmd.setExecutor(noticeCommand);
+        } else {
+            getLogger().warning("noticeコマンドの登録に失敗しました");
+        }
         
         ReloadCommand reloadCommand = new ReloadCommand(this);
-        getCommand("noticereload").setExecutor(reloadCommand);
+        PluginCommand reloadCmd = getCommand("noticereload");
+        if (reloadCmd != null) {
+            reloadCmd.setExecutor(reloadCommand);
+        } else {
+            getLogger().warning("noticereloadコマンドの登録に失敗しました");
+        }
         
         // 起動メッセージをmessage.ymlから取得
         String enableMessage = messageManager.getPlainMessage("plugin-enabled");

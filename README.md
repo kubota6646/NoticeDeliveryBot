@@ -1,6 +1,6 @@
 # NoticePlugin
 
-**バージョン:** 0.0.2
+**バージョン:** 0.0.3
 
 MinecraftJAVA版のプラグイン - /noticeコマンドで現在ログイン中のプレイヤーにお知らせを送信
 
@@ -31,9 +31,9 @@ mvn clean package
 ./gradlew clean build
 ```
 
-2. 生成された`notice-plugin-0.0.2.jar`を`plugins/`フォルダにコピー
-   - Maven: `target/notice-plugin-0.0.2.jar`
-   - Gradle: `build/libs/notice-plugin-0.0.2.jar`
+2. 生成された`notice-plugin-0.0.3.jar`を`plugins/`フォルダにコピー
+   - Maven: `target/notice-plugin-0.0.3.jar`
+   - Gradle: `build/libs/notice-plugin-0.0.3.jar`
 
 3. サーバーを再起動
 
@@ -163,12 +163,19 @@ notice: "&a緑色&bと水色&cと赤色"
 
 ## 変更履歴 (Changelog)
 
+### Version 0.0.3
+- コード品質の改善（IntelliJ IDEA警告の修正）
+- `@NotNull`アノテーションを追加してnull安全性を向上
+- コマンド登録時のNullPointerException対策を追加
+- クラスを`final`にして継承を防止
+
 ### Version 0.0.2
 - プラグインで使用する全てのメッセージをmessage.ymlで編集可能に変更
 - エラーメッセージ、成功メッセージ、プラグイン起動/停止メッセージを追加
 - MessageManagerに`getPlainMessage()`メソッドを追加（ログ出力用）
 - `/noticereload`コマンドを追加（サーバー再起動不要でmessage.ymlを再読み込み）
 - エラーハンドリングの改善
+- ドキュメント統合（USAGE_JP.mdの内容をREADME.mdに統合）
 
 ### Version 0.0.1
 - 初期リリース
@@ -223,8 +230,8 @@ mvn clean package
 ```
 
 ビルドされたJARファイルは以下の場所に生成されます：
-- Maven: `target/notice-plugin-0.0.2.jar`
-- Gradle: `build/libs/notice-plugin-0.0.2.jar`
+- Maven: `target/notice-plugin-0.0.3.jar`
+- Gradle: `build/libs/notice-plugin-0.0.3.jar`
 
 ### IntelliJ IDEA でのビルド
 
@@ -270,5 +277,5 @@ NoticeDeliveryBot/
 ---
 
 **作成者:** kubota6646  
-**バージョン:** 0.0.2  
+**バージョン:** 0.0.3  
 **対応バージョン:** Minecraft 1.19.4以上

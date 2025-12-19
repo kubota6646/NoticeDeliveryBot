@@ -3,12 +3,13 @@ package com.kubota6646.notice;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * /noticereloadコマンドの実行処理
  * message.ymlを再読み込みします
  */
-public class ReloadCommand implements CommandExecutor {
+public final class ReloadCommand implements CommandExecutor {
     
     private final NoticePlugin plugin;
     
@@ -17,7 +18,7 @@ public class ReloadCommand implements CommandExecutor {
     }
     
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         // message.ymlを再読み込み
         boolean success = plugin.getMessageManager().reload();
         

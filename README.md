@@ -157,7 +157,7 @@ notice: "&a緑色&bと水色&cと赤色"
 
 ## 動作環境 (Requirements)
 
-- Minecraft 1.19.4以上
+- Minecraft 1.21.8以上
 - Spigot/Bukkit API
 - Java 17以上
 
@@ -179,7 +179,7 @@ notice: "&a緑色&bと水色&cと赤色"
 
 ### Version 0.0.1
 - 初期リリース
-- Minecraft 1.19.4対応
+- Minecraft 1.21.8対応
 - Gradle ビルドシステム追加
 - 単一のお知らせメッセージ機能を実装
 - 全メッセージの日本語化
@@ -196,7 +196,7 @@ notice: "&a緑色&bと水色&cと赤色"
 ### プラグインが起動しない
 
 1. サーバーログでエラーを確認してください
-2. Minecraftのバージョンが1.19.4以上であることを確認してください
+2. Minecraftのバージョンが1.21.8以上であることを確認してください
 3. Javaのバージョンが17以上であることを確認してください
 4. 他のプラグインとの競合がないか確認してください
 
@@ -262,7 +262,7 @@ NoticeDeliveryBot/
 ```
 
 ### 使用API
-- Spigot API 1.19.4-R0.1-SNAPSHOT
+- Spigot API 1.21.8-R0.1-SNAPSHOT
 - Bukkit ChatColor
 - Bukkit Configuration API
 
@@ -276,7 +276,7 @@ NoticeDeliveryBot/
 
 ### Q: プラグインが動作しない
 A: 以下を確認してください：
-1. Minecraftバージョンが1.19.4以上であること
+1. Minecraftバージョンが1.21.8以上であること
 2. Java 17以上がインストールされていること
 3. plugin.ymlがプラグインフォルダに正しく配置されていること
 4. サーバーログでエラーメッセージを確認すること
@@ -308,7 +308,7 @@ A: 現在のバージョンでは、message.ymlの既存のメッセージキー
 
 **作成者:** kubota6646  
 **現在のバージョン:** 0.0.3  
-**対応Minecraftバージョン:** 1.19.4以上  
+**対応Minecraftバージョン:** 1.21.8以上  
 **ビルドシステム:** Maven 3.6+ / Gradle 7.0+  
 **開発環境:** IntelliJ IDEA Community Edition 2025.2.4  
 
@@ -319,5 +319,5 @@ A: 現在のバージョンでは、message.ymlの既存のメッセージキー
 
 ### 技術スタック (Tech Stack)
 - Java 17
-- Spigot/Bukkit API 1.19.4
+- Spigot/Bukkit API 1.21.8
 - Maven / Gradle
